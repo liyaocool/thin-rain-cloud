@@ -1,0 +1,12 @@
+GET http://{{baseUrl}}/consumer/payment/1
+Accept: application/json
+
+###创建支付订单
+###创建支付订单
+POST {{baseUrl}}/consumer/payment
+Content-Type: application/json
+
+{
+  "id": 2,
+  "serial": "content"
+}

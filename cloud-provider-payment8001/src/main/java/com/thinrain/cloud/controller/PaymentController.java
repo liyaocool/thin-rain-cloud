@@ -23,18 +23,34 @@ public class PaymentController {
 
     @GetMapping(value = "/{id}")
     public CommonResult selectByPrimaryKey(@PathVariable("id") Long id) {
-        Payment payment = paymentService.selectByPrimaryKey(id);
-        return payment != null ?
-                new CommonResult(200, "成功", payment)
-                : new CommonResult(400, "失败", null);
+        try {
+            Payment payment = paymentService.selectByPrimaryKey(id);
+            return payment != null ?
+                    new CommonResult(200, "查询成功", payment)
+                    : new CommonResult(400, "查询订单失败", null);
+        } catch (Exception e) {
+            log.error("系统错误:" + e);
+            return new CommonResult(500, "系统错误", null);
+        }
+
     }
 
     @PostMapping(value = "")
-    public CommonResult insert(Payment record) {
-        int result = paymentService.insert(record);
-        log.info("生成订单" + result);
-        return result > 0 ?
-                new CommonResult(200, "成功", result)
-                : new CommonResult(400, "失败", result);
+    public CommonResult insert(@RequestBody Payment payment) {
+        try {
+            log.info("payment",payment.toString());
+            int result = paymentService.insert(payment);
+
+            if (result > 0) {
+                return new CommonResult(200, "成功", result);
+            } else {
+                log.error("生成订单错误" + result);
+                return new CommonResult(400, "失败", null);
+            }
+        } catch (Exception e) {
+            log.error("生成订单错误" + e);
+            return new CommonResult(500, "系统错误", null);
+        }
+
     }
 }

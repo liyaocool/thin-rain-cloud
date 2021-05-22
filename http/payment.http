@@ -1,0 +1,13 @@
+### 获取支付信息
+GET {{baseUrl}}/payment/2
+Accept: application/json
+
+###创建支付订单
+POST {{baseUrl}}/payment
+Content-Type: application/json
+
+{
+  "id": 2,
+  "serial": "2content"
+}
+

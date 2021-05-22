@@ -27,7 +27,7 @@
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.thinrain.cloud.entities.Payment" useGeneratedKeys="true">
         insert into payment
         ( id,serial)
-        values (#{id,jdbcType=BIGINT},#{serial,jdbcType=VARCHAR}))
+        values (#{id,jdbcType=BIGINT},#{serial,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.thinrain.cloud.entities.Payment" useGeneratedKeys="true">
         insert into payment
