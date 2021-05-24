@@ -1,0 +1,17 @@
+
+server:
+  port: 7003
+
+spring:
+  application:
+    name: eureka-server-replica2
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      # 两个eureka服务端互相注册，形成集群
+      defaultZone: http://localhost:7002/eureka/
