@@ -16,3 +16,13 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   # entity别名类 包路径
   type-aliases-package: com.thinrain.cloud.entites
+
+eureka:
+  client:
+    # 注册到Eureka的注册中心
+    register-with-eureka: true
+    # 获取注册实例列表
+    fetch-registry: true
+    service-url:
+      # 配置注册中心地址
+      defaultZone: http://localhost:7001/eureka
