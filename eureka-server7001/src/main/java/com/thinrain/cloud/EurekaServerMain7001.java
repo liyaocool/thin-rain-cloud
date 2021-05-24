@@ -2,16 +2,12 @@ package com.thinrain.cloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
-/**
- * OrderMain80
- *
- * @author yao
- * @date 2021/5/22 9:29
- */
 @SpringBootApplication
-public class OrderMain80 {
+@EnableEurekaServer
+public class EurekaServerMain7001 {
     public static void main(String[] args) {
-        SpringApplication.run(OrderMain80.class, args);
+        SpringApplication.run(EurekaServerMain7001.class, args);
     }
 }

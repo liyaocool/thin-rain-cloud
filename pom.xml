@@ -34,11 +34,6 @@
     <dependencyManagement>
         <!-- 依赖声明 -->
         <dependencies>
-            <dependency>
-                <groupId>com.thinrain</groupId>
-                <artifactId>cloud-api-commons</artifactId>
-                <version>${project.version}</version>
-            </dependency>
             <!--spring boot 2.2.2-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>

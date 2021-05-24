@@ -1,0 +1,16 @@
+
+server:
+  port: 7001
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    # eureka自身服务不接入仓库
+    fetch-registry: false
+    # eureka自身服务不注册进eureka
+    register-with-eureka: false
