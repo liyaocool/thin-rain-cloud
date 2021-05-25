@@ -20,9 +20,13 @@ mybatis:
 eureka:
   instance:
     # 实例id
-    instance-id: payment-service-8002
+    instance-id: payment-service-8001
     # 是否显示前缀ip地址
     prefer-ip-address: true
+    # 注册心跳周期 （秒）默认30秒 测试时小值方便
+    lease-renewal-interval-in-seconds: 1
+    # 租约到期最大期限 （秒）默认90秒 eureka server 在收到最后一次心跳等待的最大值，超时则清除服务
+    lease-expiration-duration-in-seconds: 3
   client:
     # 注册到Eureka的注册中心
     register-with-eureka: true
@@ -30,4 +34,4 @@ eureka:
     fetch-registry: true
     service-url:
       # 配置注册中心地址 集群,列表前面的地址宕机会把服务注册到后面的地址
-      defaultZone: http://eureka1.com:7002/eureka/,http://eureka2.com:7003/eureka/
+      defaultZone: http://localhost:7001/eureka/,http://eureka1.com:7002/eureka/,http://eureka2.com:7003/eureka/

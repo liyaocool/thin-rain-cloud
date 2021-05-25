@@ -1,4 +1,3 @@
-
 server:
   port: 7001
 
@@ -9,10 +8,18 @@ spring:
 eureka:
   instance:
     hostname: localhost
+    instance-id: eureka-server-7001
+    prefer-ip-address: true
+
+  server:
+    # 是否自我保护模式， 关闭后未发送心跳的客户端服务将及时清除
+    enable-self-preservation: true
+    # 对自我保护模式配置 清除注册中心的阈值（毫秒） eureka server 在收到最后一次心跳等待的最大值，超时则清除服务
+    eviction-interval-timer-in-ms: 3000
   client:
     # eureka自身服务不接入仓库
     fetch-registry: false
     # eureka自身服务不注册进eureka
     register-with-eureka: false
     service-url:
-        defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://localhost:7001/eureka/

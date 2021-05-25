@@ -4,11 +4,18 @@ server:
 
 spring:
   application:
-    name: eureka-server-replica2
+    name: eureka-server
 
 eureka:
   instance:
     hostname: eureka2.com
+
+  server:
+    # 是否自我保护模式， 关闭后未发送心跳的客户端服务将及时清除
+    enable-self-preservation: false
+    # 清除注册中心的阈值（毫秒）
+    eviction-interval-timer-in-ms: 3000
+
   client:
     fetch-registry: false
     register-with-eureka: false

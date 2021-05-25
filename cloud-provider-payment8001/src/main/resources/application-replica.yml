@@ -23,6 +23,10 @@ eureka:
     instance-id: payment-service-8002
     # 是否显示前缀ip地址
     prefer-ip-address: true
+    # 注册心跳周期 （秒） 测试时小值方便
+    lease-renewal-interval-in-seconds: 1
+    # 租约到期最大期限 （秒）eureka server 在收到最后一次心跳等待的最大值，超时则清除服务
+    lease-expiration-duration-in-seconds: 3
   client:
     # 注册到Eureka的注册中心
     register-with-eureka: true
