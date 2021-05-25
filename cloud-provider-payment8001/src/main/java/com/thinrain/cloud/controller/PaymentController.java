@@ -4,6 +4,7 @@ import com.thinrain.cloud.entities.CommonResult;
 import com.thinrain.cloud.entities.Payment;
 import com.thinrain.cloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -21,16 +22,19 @@ public class PaymentController {
     @Resource
     PaymentService paymentService;
 
+    @Value("${server.port}")
+    private String serverPort;
+
     @GetMapping(value = "/{id}")
     public CommonResult selectByPrimaryKey(@PathVariable("id") Long id) {
         try {
             Payment payment = paymentService.selectByPrimaryKey(id);
             return payment != null ?
-                    new CommonResult(200, "查询成功", payment)
-                    : new CommonResult(400, "查询订单失败", null);
+                    new CommonResult(200, "查询成功" + serverPort, payment)
+                    : new CommonResult(400, "查询订单失败" + serverPort, null);
         } catch (Exception e) {
             log.error("系统错误:" + e);
-            return new CommonResult(500, "系统错误", null);
+            return new CommonResult(500, "系统错误" + serverPort, null);
         }
 
     }
@@ -38,7 +42,7 @@ public class PaymentController {
     @PostMapping(value = "")
     public CommonResult insert(@RequestBody Payment payment) {
         try {
-            log.info("payment",payment.toString());
+            log.info("payment", payment.toString());
             int result = paymentService.insert(payment);
 
             if (result > 0) {
