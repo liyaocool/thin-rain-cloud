@@ -7,6 +7,11 @@ spring:
     name: consumer-order
 
 eureka:
+  instance:
+    # 实例id
+    instance-id: consumer-order
+    # 是否显示前缀ip地址
+    prefer-ip-address: true
   client:
     # 注册到Eureka的注册中心
     register-with-eureka: true
